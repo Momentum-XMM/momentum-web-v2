@@ -7,12 +7,20 @@ import WhitePaper from '../../pdfs/MomentumWhitepaper.pdf';
 import Roadmap from '../../pdfs/roadmap.png'
 
 const Container = styled.div`
+    font-family: 'Open Sans';
+
     p {
         font-size: 20px;
     }
 
     a.btn {
+        font-family: 'Open Sans';
         font-size: 16px;
+        margin-top: 0px;
+    }
+
+    .top-box {
+        margin-top: 40px;
     }
 `;
 
@@ -36,13 +44,12 @@ const About = () => {
                 <div class="buy-btn fordsktop text-right">
                     <UniLink />
                 </div>
-                <div class="transfer-cntnt about-heading">
+                {/* <div class="transfer-cntnt about-heading">
                     <h3 class="t-sky mb-0" style={{ fontWeight: 500 }}>About Momentum</h3>
-                </div>
+                </div> */}
             </div>
             <div class="col-md-12">
-
-                <div class="about-box text-white">
+                <div class="about-box text-white top-box">
                     <div class="about-icon-img"><img src="images/about-icon1.png" /></div>
                     <h5 class="text-uppercase text-white">MOMENTUM EXPLAINED</h5>
                     <p class="t-sky">Momentum is a dynamic deflationary token</p>
@@ -52,28 +59,26 @@ const About = () => {
                     <p>Both momentum values will be available on the home page and through functions in the contract</p>
                     <LinkButton
                         link={Infograpic}
-                        text="VIEW OUR VISUAL INFOGRAPHIC"
+                        text="VISUAL INFOGRAPHIC"
                     />
                 </div>
-                
                 <div class="about-box text-white">
                     <div class="about-icon-img"><img src="images/about-icon2.png" /></div>
-                    <h5 class="text-uppercase text-white">MOMENTUM AUDITED</h5>
+                    <h5 class="text-uppercase text-white">AUDITED</h5>
                     <p>The contract has been audited by QuillHash and there were no critical issues found</p>
                     <LinkButton
                         link={AuditReport}
-                        text="VIEW AUDIT"
+                        text="AUDIT"
                     />
                 </div>
-                
                 <div class="about-box text-white">
                     <div class="about-icon-img"><img src="images/about-icon3.png" /></div>
-                    <h5 class="text-uppercase text-white">MOMENTUM CONTRACTS</h5>
+                    <h5 class="text-uppercase text-white">LIQUIDITY LOCKED</h5>
                     <p>We believe transparency is key - please find all contracts and proof of locked liquidity on Etherscan.</p>
                     <p>91% of initial total supply provided as liquidity and locked until December 21, 2021</p>
                     <LinkButton
                         link="https://etherscan.io/token/0xb469899812f74ee43bffe2d2022590111da86425#balances"
-                        text="VIEW LOCKED LIQUIDITY"
+                        text="LOCKED LIQUIDITY"
                     />
                     <LinkButton
                         link="https://etherscan.io/address/0xfdba6feecdf75d2be2595a048141da210b324315#tokentxns"
@@ -89,11 +94,11 @@ const About = () => {
                     <h5 class="text-uppercase text-white">MOMENTUM WHITEPAPER & ROADMAP</h5>
                     <LinkButton
                         link={WhitePaper}
-                        text="MOMENTUM WHITEPAPER"
+                        text="WHITEPAPER"
                     />
                     <LinkButton
                         link={Roadmap}
-                        text="MOMENTUM ROADMAP"
+                        text="ROADMAP"
                     />
                 </div>
             </div>

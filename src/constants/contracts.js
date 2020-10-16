@@ -1,0 +1,2 @@
+export const MOMENTUM_DECIMALS_e_10 = 10000000000;
+export const MOMENTUM_ADDRESS = '0x9a7a4c141a3bcce4a31e42c1192ac6add35069b4';

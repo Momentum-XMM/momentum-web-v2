@@ -1,24 +1,41 @@
 import React from 'react';
 import styled from 'styled-components';
-import UniLink from '../common/UniLink';
+// import UniLink from '../common/UniLink';
 
 const StyledPoolCard = styled.div`
+    font-family: 'Open Sans';
+
     .pooling-box {
-        padding: 40px 30px;
+        padding: 40px 20px;
+        border: 1px solid rgba(255,255,255,0.45);
+
+        .title {
+            font-family: 'Open Sans';
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        .text {
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .subtext {
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
 
         .btn {
             font-size: 15px;
+            font-family: 'Open Sans';
         }
-    }
 
-    .text {
-        margin-bottom: 20px;
-        font-size: 18px;
-        font-weight: 500;
-    }
-
-    .subtext {
-        margin-bottom: 30px;
+        @media (max-width: 1200px) {
+            .btn {
+                margin-bottom: 8px;
+            }
+        }
     }
 `;
 
@@ -32,9 +49,9 @@ const PoolCard = ({ title, text, subtext, link1, link1text, link2, link2text }) 
                 <p className="text">
                     {text}
                 </p>
-                <p className="subtext">
+                {subtext && <p className="subtext">
                     {subtext}
-                </p>
+                </p>}
                 <a
                     href={link1}
                     className="btn"
@@ -61,14 +78,14 @@ const Pools = () => {
         <>
             <div className="row">
                 <div className="col-lg-12">
-                    <div className="buy-btn fordsktop text-right">
+                    {/* <div className="buy-btn fordsktop text-right">
                         <UniLink />
-                    </div>
+                    </div> */}
                     <div
                         className="transfer-cntnt text-center pooling-header"
-                        style={{ paddingBottom: 35 }}
+                        style={{ padding: '35px 0' }}
                     >
-                        <h3 className="t-sky mb-0" style={{ fontWeight: 500 }}>Pools</h3>
+                        <h3 className="t-sky mb-0" style={{ fontWeight: 500, color: 'white' }}>Pools</h3>
                     </div>
                 </div>
             </div>
@@ -80,16 +97,16 @@ const Pools = () => {
                     link1="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0x9a7a4c141a3bcce4a31e42c1192ac6add35069b4"
                     link1text="Buy"
                     link2="https://app.uniswap.org/#/add/0x9a7a4C141a3BCCE4A31e42C1192Ac6Add35069b4/ETH"
-                    link2text="Pool"
+                    link2text="Add Liquidity"
                 />
                 <PoolCard
                     title="🌊 XMMx / ETH 🌊"
-                    text="XMMx = XMM/ETH Uniswap liquidity token"
+                    text="XMMx = XMM/ETH Uniswap LP"
                     subtext="0xb469899812f74ee43bffe2d2022590111da86425"
                     link1="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0xb469899812f74ee43bffe2d2022590111da86425"
                     link1text="Buy"
-                    link2="https://app.uniswap.org/#/add/0xb469899812f74ee43bffe2d2022590111da86425/ETH"
-                    link2text="Pool"
+                    // link2="https://app.uniswap.org/#/add/0xb469899812f74ee43bffe2d2022590111da86425/ETH"
+                    // link2text="Pool"
                 />
                 <PoolCard
                     title="🎁 DeFiat Rewards Pool 🎁"
@@ -104,8 +121,8 @@ const Pools = () => {
                     subtext="25/25/25/25 split"
                     link1="https://pools.balancer.exchange/#/pool/0x953500397dbd43bf64321c4f54cd7b3f862c1bd6/"
                     link1text="Balancer"
-                    link2="https://pools.fyi/#/info/0x953500397dbd43bf64321c4f54cd7b3f862c1bd6"
-                    link2text="Pools.FYI"
+                    // link2="https://pools.fyi/#/info/0x953500397dbd43bf64321c4f54cd7b3f862c1bd6"
+                    // link2text="Pools.FYI"
                 />
                 <PoolCard
                     title="⚖️ XMMx / WBTC ⚖️"
@@ -113,8 +130,8 @@ const Pools = () => {
                     subtext="34/66 split"
                     link1="https://pools.balancer.exchange/#/pool/0xc3d407ce0a06530315c14c9f2374a16cf436461a/"
                     link1text="Balancer"
-                    link2="https://pools.fyi/#/info/0xc3d407ce0a06530315c14c9f2374a16cf436461a"
-                    link2text="Pools.FYI"
+                    // link2="https://pools.fyi/#/info/0xc3d407ce0a06530315c14c9f2374a16cf436461a"
+                    // link2text="Pools.FYI"
                 />
             </div>
         </>

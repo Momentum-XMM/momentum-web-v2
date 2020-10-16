@@ -1,19 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Web3 from 'web3';
 import UniLink from '../common/UniLink';
 import ROUTES from '../../constants/routes';
-import Web3 from 'web3';
 import contract from '../../abis/Momentum.json';
 import { INFURA } from '../../keys';
+import { MOMENTUM_DECIMALS_e_10, MOMENTUM_ADDRESS } from '../../constants/contracts';
 
 const web3 = new Web3(new Web3.providers.HttpProvider(`https://mainnet.infura.io/v3/${INFURA}`));
-const momentumContract = new web3.eth.Contract(contract.abi, '0x9a7a4c141a3bcce4a31e42c1192ac6add35069b4');
+const momentumContract = new web3.eth.Contract(contract.abi, MOMENTUM_ADDRESS);
 
-const DECIMALS = 10000000000;
+const borderColor = 'rgb(255 255 255 / 0.45)';
 
 const Container = styled.div`
-    .title-text {
+    font-family: 'Russo One';
+    letter-spacing: 0.03em;
+    font-size: 24px;
+
+    .lead-text {
+        color: white;
+        font-family: 'Open Sans';
         font-size: 21px;
+    }
+
+    .info-link {
+        font-family: 'Open Sans';
     }
 
     .amount-percentage-box {
@@ -33,15 +44,29 @@ const Container = styled.div`
         }
     }
 
-    .transfer-amountbox .btnbox span {
-        color: white;
-        text-transform: unset;
-        font-weight: 500;
+    .transfer-amountbox {
+        border: 1px solid ${borderColor};
+
+        .btnbox span {
+            border: 1px solid ${borderColor};
+            color: rgb(255 255 255 / 0.8);
+            text-transform: unset;
+            font-size: unset;
+
+            &::after {
+                background: ${borderColor};
+            }
+        }
+
+        .btn-holder::after {
+            background-color: ${borderColor};
+        }
     }
 
     .status-box {
         .title-text {
             padding-bottom: 10px;
+            text-decoration: underline;
         }
 
         .short {
@@ -56,8 +81,8 @@ const percentBurnt = currentSupply => {
     return ((amountBurnt / TOTAL_SUPPLY) * 100).toFixed(2);
 }
 
-function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+const formatNumber = num => {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 }
 
 const Home = () => {
@@ -79,12 +104,12 @@ const Home = () => {
                     <UniLink />
                 </div>
                 <div className="transfer-cntnt text-center">
-                    <p className="t-sky title-text">
-                        Momentum is a dynamic deflationary token
+                    <p className="t-sky title-text lead-text">
+                        Dynamic Deflationary Token
                     </p> 
                     <p className="text-white mb-0">
                         <b>
-                            <a href={ROUTES.ABOUT}>
+                            <a href={ROUTES.ABOUT} className="info-link">
                                 More Info
                             </a>
                         </b>
@@ -96,13 +121,13 @@ const Home = () => {
                             <span>
                                 <div className="status-box">
                                     <div className="title-text">
-                                        Momentum Status
+                                        Status
                                     </div>
                                     <div className="short">
-                                        Short: {momentum.short && formatNumber((momentum.short / DECIMALS).toFixed(0))}
+                                        Short: {momentum.short && formatNumber((momentum.short / MOMENTUM_DECIMALS_e_10).toFixed(0))}
                                     </div>
                                     <div className="long">
-                                        Long: {momentum.long && formatNumber((momentum.long / DECIMALS).toFixed(0))}
+                                        Long: {momentum.long && formatNumber((momentum.long / MOMENTUM_DECIMALS_e_10).toFixed(0))}
                                     </div>
                                 </div>
                             </span>
@@ -111,12 +136,12 @@ const Home = () => {
                     <div className="d-flex flex-wrap btn-holder justify-content-center">
                         <div className="btnbox">
                             <span>
-                                🔥 {momentum.totalSupply && percentBurnt(momentum.totalSupply / DECIMALS)}% Burned 🔥
+                                🔥 {momentum.totalSupply && percentBurnt(momentum.totalSupply / MOMENTUM_DECIMALS_e_10)}% Burned 🔥
                             </span>
                         </div>
                         <div className="btnbox">
                             <span>
-                                💰 Supply: {momentum.totalSupply && formatNumber((momentum.totalSupply / DECIMALS).toFixed(0))} 💰
+                                ⚡️ Supply: {momentum.totalSupply && formatNumber((momentum.totalSupply / MOMENTUM_DECIMALS_e_10).toFixed(0))} ⚡️
                             </span>
                         </div>
                     </div>    
