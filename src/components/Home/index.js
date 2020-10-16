@@ -1,38 +1,128 @@
-import React from 'react';
-// import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 import UniLink from '../common/UniLink';
+import ROUTES from '../../constants/routes';
+import Web3 from 'web3';
+import contract from '../../abis/Momentum.json';
+import { INFURA } from '../../keys';
+
+const web3 = new Web3(new Web3.providers.HttpProvider(`https://mainnet.infura.io/v3/${INFURA}`));
+const momentumContract = new web3.eth.Contract(contract.abi, '0x9a7a4c141a3bcce4a31e42c1192ac6add35069b4');
+
+const DECIMALS = 10000000000;
+
+const Container = styled.div`
+    .title-text {
+        font-size: 21px;
+    }
+
+    .amount-percentage-box {
+        display: flex;
+        justify-content: center;
+    }
+
+    .topbox {
+        span::after {
+            height: 0px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .topbox {
+            margin-bottom: 0px;
+        }
+    }
+
+    .transfer-amountbox .btnbox span {
+        color: white;
+        text-transform: unset;
+        font-weight: 500;
+    }
+
+    .status-box {
+        .title-text {
+            padding-bottom: 10px;
+        }
+
+        .short {
+            padding-bottom: 5px;
+        }
+    }
+`;
+
+const percentBurnt = currentSupply => {
+    const TOTAL_SUPPLY = 77000000;
+    const amountBurnt = TOTAL_SUPPLY - currentSupply;
+    return ((amountBurnt / TOTAL_SUPPLY) * 100).toFixed(2);
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+}
 
 const Home = () => {
+
+    const [momentum, setMomentum] = useState({});
+
+    useEffect(() => {
+        const getMomentum = async () => {
+            const { 0: SM, 1: LM, 2: TS } = await momentumContract.methods.getMomentumAndSupply().call();
+            setMomentum({ long: LM, short: SM, totalSupply: TS });
+        }
+        getMomentum();
+    }, []);
+
     return (
-        <div className="row align-items-center">
+        <Container className="row align-items-center">
             <div className="col-lg-12">
                 <div className="buy-btn fordsktop text-right">
                     <UniLink />
                 </div>
                 <div className="transfer-cntnt text-center">
-                    {/* <p className="t-sky mb-0">Momentum protects its store of value by applying a variable momentum burn fee on transactions. Get paid dividends by holding this value and supporting the value risk of a transaction.</p> 
-                    <p className="text-white mb-0"><b>Together we #gainmonentum</b></p> */}
+                    <p className="t-sky title-text">
+                        Momentum is a dynamic deflationary token
+                    </p> 
+                    <p className="text-white mb-0">
+                        <b>
+                            <a href={ROUTES.ABOUT}>
+                                More Info
+                            </a>
+                        </b>
+                    </p>
                 </div>
                 <div className="transfer-amountbox t-white">
-                    {/* <input type="number" max="50" min="-50" value="0" className="form-control" placeholder="input your transfer amount" id="transperc"/>
                     <div className="amount-percentage-box">
-                        <div className="amount-percentage-midle">
-                            <div className="percentage-height" style={{ height: '50%' }}></div> 
-                        </div>
-                        <div className="amount-percentage-circle animate__animated" style={{ bottom: '34%' }}>
-                            <div className="amount-percentage-circle-inr">
-                                <h3>0% <span>VMB</span> </h3> 
-                            </div>
-                            <div className="puller-box"></div>
+                        <div className="btnbox topbox">
+                            <span>
+                                <div className="status-box">
+                                    <div className="title-text">
+                                        Momentum Status
+                                    </div>
+                                    <div className="short">
+                                        Short: {momentum.short && formatNumber((momentum.short / DECIMALS).toFixed(0))}
+                                    </div>
+                                    <div className="long">
+                                        Long: {momentum.long && formatNumber((momentum.long / DECIMALS).toFixed(0))}
+                                    </div>
+                                </div>
+                            </span>
                         </div>
                     </div>
                     <div className="d-flex flex-wrap btn-holder justify-content-center">
-                        <div className="btnbox"><span>650000 XMM - 5.66% Burned</span></div>
-                        <div className="btnbox"><span>Total tokens : 72,639,219.00</span></div>
-                    </div>     */}
+                        <div className="btnbox">
+                            <span>
+                                🔥 {momentum.totalSupply && percentBurnt(momentum.totalSupply / DECIMALS)}% Burned 🔥
+                            </span>
+                        </div>
+                        <div className="btnbox">
+                            <span>
+                                💰 Supply: {momentum.totalSupply && formatNumber((momentum.totalSupply / DECIMALS).toFixed(0))} 💰
+                            </span>
+                        </div>
+                    </div>    
                 </div>
             </div>
-        </div>
+        </Container>
     );
 }
 
