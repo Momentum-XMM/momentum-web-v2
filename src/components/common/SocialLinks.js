@@ -10,7 +10,7 @@ const links = [
         image: "images/etherscan.png"
     },
     {
-        link: "https://github.com",
+        link: "https://github.com/Momentum-XMM",
         image: "images/github.png"
     },
     {
