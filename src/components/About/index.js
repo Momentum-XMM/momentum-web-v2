@@ -44,19 +44,16 @@ const About = () => {
                 <div class="buy-btn fordsktop text-right">
                     <UniLink />
                 </div>
-                {/* <div class="transfer-cntnt about-heading">
-                    <h3 class="t-sky mb-0" style={{ fontWeight: 500 }}>About Momentum</h3>
-                </div> */}
             </div>
             <div class="col-md-12">
                 <div class="about-box text-white top-box">
                     <div class="about-icon-img"><img src="images/about-icon1.png" /></div>
                     <h5 class="text-uppercase text-white">MOMENTUM EXPLAINED</h5>
                     <p class="t-sky">Momentum is a dynamic deflationary token</p>
-                    <p>Two important values are maintained in the token contract: the Short Momentum and the Long Momentum, and token transfers will have an impact on these values</p>
-                    <p>Transfers that move the Short Momentum closer to the Long Momentum will have a transfer fee of ~0.75%</p>
-                    <p>Transfers that move the Short Momentum further away from the Long Momentum will be charged a destabilization fee between ~0.75% and ~3.5% on average, and in rare cases a little bit more</p>
-                    <p>Both momentum values will be available on the home page and through functions in the contract</p>
+                    <p>Two important values are maintained in the token contract: the Short Momentum and the Long Momentum, and token transfers will have an impact on these values.</p>
+                    <p>Transfers that move the Short Momentum closer to the Long Momentum will have a transfer fee of ~0.75%.</p>
+                    <p>Transfers that move the Short Momentum further away from the Long Momentum will be charged a destabilization fee between ~0.75% and ~3.5% on average, and in rare cases a little bit more.</p>
+                    <p>Both momentum values will be available on the home page and through functions in the contract.</p>
                     <LinkButton
                         link={Infograpic}
                         text="VISUAL INFOGRAPHIC"
@@ -65,7 +62,7 @@ const About = () => {
                 <div class="about-box text-white">
                     <div class="about-icon-img"><img src="images/about-icon2.png" /></div>
                     <h5 class="text-uppercase text-white">AUDITED</h5>
-                    <p>The contract has been audited by QuillHash and there were no critical issues found</p>
+                    <p>The contract has been audited by QuillHash and there were no critical issues found.</p>
                     <LinkButton
                         link={AuditReport}
                         text="AUDIT"
@@ -74,8 +71,8 @@ const About = () => {
                 <div class="about-box text-white">
                     <div class="about-icon-img"><img src="images/about-icon3.png" /></div>
                     <h5 class="text-uppercase text-white">LIQUIDITY LOCKED</h5>
-                    <p>We believe transparency is key - please find all contracts and proof of locked liquidity on Etherscan.</p>
-                    <p>91% of initial total supply provided as liquidity and locked until December 21, 2021</p>
+                    <p>We believe transparency is key - Please find all contracts and proof of locked liquidity on Etherscan.</p>
+                    <p>91% of initial total supply provided as liquidity and locked until December 21, 2021.</p>
                     <LinkButton
                         link="https://etherscan.io/token/0xb469899812f74ee43bffe2d2022590111da86425#balances"
                         text="LOCKED LIQUIDITY"

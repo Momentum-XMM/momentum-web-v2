@@ -92,7 +92,7 @@ const Pools = () => {
             <div className="row align-items-stretch pooling-wrapper">
                 <PoolCard
                     title="🔥 XMM / ETH 🔥"
-                    text="0.75% - 3.5% transfer fee"
+                    text="Uniswap Pair"
                     subtext="0x9a7a4c141a3bcce4a31e42c1192ac6add35069b4"
                     link1="https://app.uniswap.org/#/swap?inputCurrency=ETH&outputCurrency=0x9a7a4c141a3bcce4a31e42c1192ac6add35069b4"
                     link1text="Buy"
