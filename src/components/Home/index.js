@@ -17,34 +17,12 @@ const Container = styled.div`
     letter-spacing: 0.03em;
     font-size: 24px;
 
-    .lead-text {
-        color: white;
-        font-family: 'Open Sans';
-        font-size: 21px;
-    }
+    ${'' /* @media (max-width: 500px) {
+        font-size: 18px;
+    } */}
 
-    .info-link {
-        font-family: 'Open Sans';
-    }
-
-    .amount-percentage-box {
-        display: flex;
-        justify-content: center;
-    }
-
-    .topbox {
-        span::after {
-            height: 0px;
-        }
-    }
-
-    @media (max-width: 767px) {
-        .topbox {
-            margin-bottom: 0px;
-        }
-    }
-
-    .transfer-amountbox {
+    .main-info-box {
+        margin-top: 20px;
         border: 1px solid ${borderColor};
 
         .btnbox span {
@@ -56,22 +34,53 @@ const Container = styled.div`
             &::after {
                 background: ${borderColor};
             }
+
+            .status-box {
+                .title-text {
+                    padding-bottom: 10px;
+                    ${'' /* text-decoration: underline; */}
+                }
+
+                .short {
+                    padding-bottom: 5px;
+                }
+            }
+        }
+
+        .btnbox.secondary-info span {
+            height: 124px;
+            ${'' /* padding: 28px 20px; */}
         }
 
         .btn-holder::after {
             background-color: ${borderColor};
+            height: 86px;
+
+            @media (max-width: 767px) {
+                height: 200px;
+            }
+        }
+
+        .amount-percentage-box {
+            display: flex;
+            justify-content: center;
+
+            .topbox {
+                span::after {
+                    height: 0px;
+                }
+            }
+
+            @media (max-width: 767px) {
+                .topbox {
+                    margin-bottom: 0px;
+                }
+            }
         }
     }
 
-    .status-box {
-        .title-text {
-            padding-bottom: 10px;
-            text-decoration: underline;
-        }
-
-        .short {
-            padding-bottom: 5px;
-        }
+    .info-link {
+        font-family: 'Open Sans';
     }
 `;
 
@@ -103,19 +112,7 @@ const Home = () => {
                 <div className="buy-btn fordsktop text-right">
                     <UniLink />
                 </div>
-                <div className="transfer-cntnt text-center">
-                    <p className="t-sky title-text lead-text">
-                        Dynamic Deflationary Token
-                    </p> 
-                    <p className="text-white mb-0">
-                        <b>
-                            <a href={ROUTES.ABOUT} className="info-link">
-                                More Info
-                            </a>
-                        </b>
-                    </p>
-                </div>
-                <div className="transfer-amountbox t-white">
+                <div className="transfer-amountbox main-info-box">
                     <div className="amount-percentage-box">
                         <div className="btnbox topbox">
                             <span>
@@ -134,17 +131,37 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="d-flex flex-wrap btn-holder justify-content-center">
-                        <div className="btnbox">
+                        <div className="btnbox secondary-info">
                             <span>
-                                🔥 {momentum.totalSupply && percentBurnt(momentum.totalSupply / MOMENTUM_DECIMALS_e_10)}% Burned 🔥
+                                <div>
+                                    🔥 Burned 🔥
+                                </div>
+                                <div>
+                                    {momentum.totalSupply && percentBurnt(momentum.totalSupply / MOMENTUM_DECIMALS_e_10) + '%'}
+                                </div>
                             </span>
                         </div>
-                        <div className="btnbox">
+                        <div className="btnbox secondary-info">
                             <span>
-                                ⚡️ Supply: {momentum.totalSupply && formatNumber((momentum.totalSupply / MOMENTUM_DECIMALS_e_10).toFixed(0))} ⚡️
+                                <div>
+                                    ⚡️ Supply ⚡️
+                                </div>
+                                <div>
+                                    {momentum.totalSupply && formatNumber((momentum.totalSupply / MOMENTUM_DECIMALS_e_10).toFixed(0))}
+                                </div>
+                                {/* ⚡️ Supply: {momentum.totalSupply && formatNumber((momentum.totalSupply / MOMENTUM_DECIMALS_e_10).toFixed(0))} ⚡️ */}
                             </span>
                         </div>
                     </div>    
+                </div>
+                <div className="transfer-cntnt text-center">
+                    <p className="text-white mb-0">
+                        <b>
+                            <a href={ROUTES.ABOUT} className="info-link">
+                                More Info
+                            </a>
+                        </b>
+                    </p>
                 </div>
             </div>
         </Container>

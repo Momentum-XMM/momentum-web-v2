@@ -11,7 +11,8 @@ WebFont.load({
     google: {
         families: [
             'Russo One: 400',
-            'Open Sans: 400, 600'
+            'Open Sans: 400, 600',
+            'Commissioner: 400, 600, 800'
         ]
     }
 })
