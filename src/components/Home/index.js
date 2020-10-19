@@ -38,7 +38,6 @@ const Container = styled.div`
             .status-box {
                 .title-text {
                     padding-bottom: 10px;
-                    ${'' /* text-decoration: underline; */}
                 }
 
                 .short {
@@ -49,7 +48,9 @@ const Container = styled.div`
 
         .btnbox.secondary-info span {
             height: 124px;
-            ${'' /* padding: 28px 20px; */}
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
         }
 
         .btn-holder::after {
