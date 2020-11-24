@@ -1,9 +1,24 @@
 import React, { useEffect } from 'react';
+import styled from 'styled-components';
 import $ from 'jquery'; // lazy slide toggle copy for responsive menu
 import SocialLinks from './SocialLinks';
 import UniLink from './UniLink'
 import NavList from './NavList';
 import ROUTES from '../../constants/routes';
+import { themeRed } from '../../constants/colors';
+
+const StyledHeader = styled.header`
+    &.site-header {
+        border-bottom: 2px solid ${themeRed};
+    }
+
+    @media (min-width: 992px) {
+        .logo {
+            height: 97px;
+            width: 97px;
+        }
+    }
+`;
 
 const Header = () => {
 
@@ -15,7 +30,7 @@ const Header = () => {
     }, [])
 
     return (
-        <header className="site-header"> 
+        <StyledHeader className="site-header"> 
             <div className="container">
                 <nav className="navbar navbar-expand navbar-dark fordsktop">
                     <div className="hdr-menu lefthead">
@@ -23,7 +38,12 @@ const Header = () => {
                     </div>
                     <div className="collapse navbar-collapse justify-content-between" id="navbarToggle" />
                     <div className="logo-holder d-flex justify-content-center align-items-center">
-                        <a className="navbar-brand logo" href={ROUTES.HOME}><img src="images/logo.png"/></a>
+                        <a className="navbar-brand logo" href={ROUTES.HOME}>
+                            <img 
+                                src="images/logo-transparent-large.png"
+                                class="logo"
+                            />
+                        </a>
                     </div>
                     <div className="hdr-menu">
                         <SocialLinks ulClasses="nav social justify-content-end" />
@@ -42,7 +62,12 @@ const Header = () => {
                             <a className="nav-link" href={ROUTES.HOME}><img src="images/text-logo.png"/></a>
                         </div>
                         <div className="logo-holder">
-                            <a className="navbar-brand logo" href={ROUTES.HOME}><img src="images/logo.png"/></a>
+                            <a className="navbar-brand logo" href={ROUTES.HOME}>
+                                <img 
+                                    src="images/logo-transparent-large.png"
+                                    class="logo"
+                                />
+                            </a>
                         </div> 
                         <div className="toggle">
                             <a href="javascript:void(0)" className="open-menu" id="open-menu"><span></span><span></span></a>
@@ -56,7 +81,7 @@ const Header = () => {
                     </div>
                 </div>
             </div>
-        </header>
+        </StyledHeader>
     );
 }
 

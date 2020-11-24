@@ -1,0 +1,1 @@
+export const themeRed = '#cb2e00';

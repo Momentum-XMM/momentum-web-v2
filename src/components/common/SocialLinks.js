@@ -1,31 +1,39 @@
 import React from 'react';
+import styled from 'styled-components';
+import { themeRed } from '../../constants/colors';
 
 const links = [
     {
         link: "https://discord.gg/gQwvNnx",
-        image: "images/discord.png"
+        image: "images/discord-red.png"
     },
     {
         link: "https://etherscan.io/token/0x9a7a4c141a3bcce4a31e42c1192ac6add35069b4",
-        image: "images/etherscan.png"
+        image: "images/etherscan-red.png"
     },
     {
         link: "https://github.com/Momentum-XMM",
-        image: "images/github.png"
+        image: "images/github-red.png"
     },
     {
         link: "https://t.me/xmmtoken",
-        image: "images/telegram.png"
+        image: "images/telegram-red.png"
     },
     {
         link: "https://twitter.com/MomentumXMM",
-        image: "images/twitter.png"
+        image: "images/twitter-red.png"
     }
-]
+];
+
+const StyledList = styled.ul`
+    img {
+        color: ${themeRed};
+    }
+`;
 
 const SocialLinks = ({ ulClasses }) => {
     return (
-        <ul className={ulClasses}>
+        <StyledList className={ulClasses}>
             {links.map(link => (
                 <li className="nav-item">
                     <a className="nav-link" href={link.link} target="_blank" rel="noopener noreferrer">
@@ -33,7 +41,7 @@ const SocialLinks = ({ ulClasses }) => {
                     </a>
                 </li>    
             ))}
-        </ul>
+        </StyledList>
     );
 }
 

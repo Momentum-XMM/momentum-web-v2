@@ -18,6 +18,10 @@ const Container = styled.div`
     main {
         flex: 1;
         display: grid;
+
+        .main-wrapper {
+            linear-gradient(0deg, #0d0b0f 20%, #271212 100%);
+        }
     }
 
     .page-container {

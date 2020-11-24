@@ -135,7 +135,7 @@ const Home = () => {
                         <div className="btnbox secondary-info">
                             <span>
                                 <div>
-                                    🔥 Burned 🔥
+                                    Burned
                                 </div>
                                 <div>
                                     {momentum.totalSupply && percentBurnt(momentum.totalSupply / MOMENTUM_DECIMALS_e_10) + '%'}
@@ -145,7 +145,7 @@ const Home = () => {
                         <div className="btnbox secondary-info">
                             <span>
                                 <div>
-                                    ⚡️ Supply ⚡️
+                                    Supply
                                 </div>
                                 <div>
                                     {momentum.totalSupply && formatNumber((momentum.totalSupply / MOMENTUM_DECIMALS_e_10).toFixed(0))}
